@@ -38,3 +38,15 @@ insert into ex_type values('sql', 'sql');
 select * from ex_type where c='sql';
 select * from ex_type where v='sql';
 select * from ex_type where c=v;    -- char와 varchar2의 길이가 다르므로 비교결과가 거짓
+
+-- TIMESTAMP 데이터 타입
+create table ex_time(
+    id number(2),
+    basictime timestamp,
+    standardtime timestamp with time zone,
+    localtime timestamp with local time zone
+);
+
+insert into ex_time values(1, sysdate, sysdate, sysdate);
+
+select * from ex_time;
