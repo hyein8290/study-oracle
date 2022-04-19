@@ -56,14 +56,15 @@ WHERE name LIKE '김_영';
 
 -- ESCAPE 옵션
 INSERT INTO student (studno, name) VALUES (33333, '황보_정');
-
+/*
 SELECT name
 FROM student
 WHERE name like '황보\_%' escape '\';
-
+*/
 delete from student where studno = 33333;
 
 -- NULL
+
 SELECT nvl(NULL, 'B') FROM dual;        --B
 SELECT nvl('c1', 'B') FROM dual;        --c1
 SELECT nvl2(NULL, 'A', 'B') FROM dual;  --B
