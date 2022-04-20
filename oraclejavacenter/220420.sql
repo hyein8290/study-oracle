@@ -869,3 +869,14 @@ when not matched then
 insert values(f.profno, f.name, f.userid, f.position, f.sal, f.hiredate, f.comm, f.deptno);
 
 select * from professor;
+
+
+/*                                시퀀스                                   */
+create sequence s_seq
+increment by 1
+start with 1
+maxvalue 100;
+
+select min_value, max_value, increment_by, last_number
+from user_sequences
+where sequence_name ='S_SEQ';
