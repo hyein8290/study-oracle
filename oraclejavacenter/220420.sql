@@ -34,6 +34,8 @@ select studno, name, height,
     dense_rank() over (order by height desc) as height_dense
 from student;
 
+
+
 select job 직책,
     ename 성명,
     sal 급여,
@@ -837,3 +839,33 @@ where deptno = (select deptno
                 where dname='컴퓨터공학과');
 
 rollback;
+
+/*                                MERGE                                  */
+-- merge
+create table professor_temp
+as
+select *
+from professor
+where position = '교수';
+
+update professor_temp
+set position = '명예교수'
+where position = '교수';
+
+insert into professor_temp
+values(9999, '김도경', 'arom21', '전임강사', 200, sysdate, 10, 101);
+
+commit; 
+
+select * from professor;
+select * from professor_temp;
+
+merge into professor p
+using professor_temp f
+on (p.profno = f.profno)
+when matched then
+update set p.position = f.position
+when not matched then
+insert values(f.profno, f.name, f.userid, f.position, f.sal, f.hiredate, f.comm, f.deptno);
+
+select * from professor;
