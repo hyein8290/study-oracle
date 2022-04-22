@@ -802,3 +802,5 @@ begin
     commit;
 end;
 
+execute hire_emp('HYEIN', 'CLERK', '7876', '222');
+select * from s_emp;
